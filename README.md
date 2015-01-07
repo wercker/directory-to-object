@@ -27,6 +27,10 @@ When parsing several directories of files it's nice to _just_ have to
 provide a path rather than creating an index object manually. This is useful
 for creating static sites out of markdown files.
 
+## See Also
+- [directory-to-json](https://github.com/wercker/directory-to-json) - write a
+directory to a JSON file
+
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
 
