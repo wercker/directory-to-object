@@ -2,12 +2,12 @@
 const walk   = require('fs-walk')
 const assert = require('assert')
 
-module.exports = dtj
+module.exports = dto
 
-// directory-to-json
+// directory-to-object
 // @param {String} path
 // @param {Function} cb
-function dtj(path, cb) {
+function dto(path, cb) {
   path = path || process.cwd()
   var obj = {}
 

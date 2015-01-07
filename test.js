@@ -1,6 +1,6 @@
 const test = require('tape')
 const path = require('path')
-const dtj  = require('./')
+const dto  = require('./')
 
 const jsonRes = {
   barDir: [
@@ -18,9 +18,9 @@ const jsonRes = {
   ]
 }
 
-test('dtj', function(t) {
+test('dto', function(t) {
   t.plan(2)
-  dtj(path.resolve('./test'), function(err, res) {
+  dto(path.resolve('./test'), function(err, res) {
     t.ifError(err, 'no err')
     t.deepEqual(res, jsonRes)
   })

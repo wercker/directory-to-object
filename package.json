@@ -1,5 +1,5 @@
 {
-  "name": "directory-to-json",
+  "name": "directory-to-object",
   "version": "1.0.0",
   "description": "Analyze a directory structure and return a `json` representation.",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "test-cov": "NODE_ENV=test istanbul cover test.js",
     "lint": "eslint ."
   },
-  "repository": "wercker/directory-to-json",
+  "repository": "wercker/directory-to-object",
   "keywords": [
     "directory",
     "analyze",

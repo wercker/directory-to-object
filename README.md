@@ -1,4 +1,4 @@
-# directory-to-json
+# directory-to-object
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][downloads-url]
 
@@ -7,15 +7,15 @@ folder structure with either files or directories.
 
 ## Installation
 ```bash
-$ npm install directory-to-json
+$ npm install directory-to-object
 ```
 
 ## Usage
 ```js
-const dtj  = require('directory-to-json')
+const dto  = require('directory-to-object')
 const path = require('path')
 
-dtj(path.resolve('./test'), console.log)
+dto(path.resolve('./test'), console.log)
 // {
 //   fooDir: [file1, file2, file3],
 //   barDir: [file4, file5, file6]
@@ -30,7 +30,7 @@ for creating static sites out of markdown files.
 ## License
 [MIT](https://tldrlegal.com/license/mit-license)
 
-[npm-image]: https://img.shields.io/npm/v/directory-to-json.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/directory-to-json
-[downloads-image]: http://img.shields.io/npm/dm/directory-to-json.svg?style=flat-square
-[downloads-url]: https://npmjs.org/package/directory-to-json
+[npm-image]: https://img.shields.io/npm/v/directory-to-object.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/directory-to-object
+[downloads-image]: http://img.shields.io/npm/dm/directory-to-object.svg?style=flat-square
+[downloads-url]: https://npmjs.org/package/directory-to-object
