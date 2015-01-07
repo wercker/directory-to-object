@@ -15,7 +15,7 @@ $ npm install directory-to-object
 const dto  = require('directory-to-object')
 const path = require('path')
 
-dto(path.resolve('./test'), console.log)
+dto(path.resolve('./test'), (err, res) => console.log(res))
 // {
 //   fooDir: [file1, file2, file3],
 //   barDir: [file4, file5, file6]
