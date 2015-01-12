@@ -5,18 +5,22 @@ const assert = require('assert')
 module.exports = dto
 
 // directory-to-object
-// @param {String} path
+// @param {Object|String} opts
 // @param {Function} cb
-function dto(path, cb) {
-  path = path || process.cwd()
-  var obj = {}
+function dto(opts, cb) {
+  opts = 'string' == typeof opts
+    ? {path: opts}
+    : opts
+
+  const path = opts.path || process.cwd()
+  cb = cb || function(){}
 
   assert.equal(typeof path, 'string')
   assert.equal(typeof cb, 'function')
 
-  saveDirs(path, obj, function(err, res) {
+  saveDirs(path, {}, function(err, res) {
     if (err) return cb(err)
-    saveFiles(path, res, cb)
+    saveFiles(path, opts, res, cb)
   })
 }
 
@@ -40,9 +44,7 @@ function saveDirs(path, obj, cb) {
     if (!baseDir) return next()
     if (obj[baseDir]) return next()
 
-    if (baseDir != currDir) {
-      currDir = baseDir
-    }
+    if (baseDir != currDir) currDir = baseDir
 
     if (stat.isDirectory()) {
       setObject(baseDir, obj, {})
@@ -56,10 +58,12 @@ function saveDirs(path, obj, cb) {
 
 // Save filenames in dir structure.
 // @param {String} path
+// @param {Object} opts
 // @param {Object} obj
 // @param {Function} cb
-function saveFiles(path, obj, cb) {
-  var root = ''
+function saveFiles(path, opts, obj, cb) {
+  const noDot = opts.noDot
+  var root  = ''
 
   walk.walk(path, walkFn, function (err) {
     if (err) cb(err)
@@ -71,6 +75,9 @@ function saveFiles(path, obj, cb) {
     baseDir = stripLeadingSlash(baseDir.split(root)[1])
 
     if (stat.isDirectory()) return next()
+    if (noDot) {
+      if (/^\./.test(filename)) return next()
+    }
     pushArr(baseDir, obj, filename)
     next()
   }
@@ -96,6 +103,7 @@ function setObject(path, obj, val) {
 
 // Push a value to an array nested in an object.
 // @param {String} path
+// @param {Object} opts
 // @param {Object} obj
 // @param {Any} value
 function pushArr(path, obj, val) {

@@ -22,6 +22,18 @@ dto(path.resolve('./test'), (err, res) => console.log(res))
 // }
 ```
 
+## API
+
+#### dto(opts|path, callback)
+```js
+dto(path.resolve('./test'), (err, res) => console.log(res))
+
+// `noDot` ignores files which have a leading `.`
+// in the filename.
+const opts = {noDot: true, path: path.resolve('./test')}
+dto(opts, (err, res) => console.log(res))
+```
+
 ## Why?
 When parsing several directories of files it's nice to _just_ have to
 provide a path rather than creating an index object manually. This is useful
